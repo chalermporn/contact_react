@@ -7,19 +7,31 @@ import './App.css';
 
 // }
 
-const aaa = () => {
-alert("Hello")
-}
+
 
 const App: React.FC = () => {
-
+const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  
+    alert(
+      `
+      Hi: ${name}
+      Email: ${email}
+      Message: ${message}
+      `
+    )
+    setName("");
+    setEmail("")
+    setMessage("")
+  
+  }
 const [name, setName] = useState("")
 const [email, setEmail] = useState("")
 const [message, setMessage] = useState("")
   return (
     <div className="container">
       <h3 className="title">Hi there!</h3>
-      <form action="" >
+      <form onSubmit={submitForm}>
         <input 
         className="form-field"
           type="text" 
@@ -44,7 +56,7 @@ const [message, setMessage] = useState("")
           value={message}
           onChange={e => setMessage(e.target.value)}> 
         </textarea>
-        <button className="btn" type="submit" onSubmit={aaa}>Send Message</button>
+        <button className="btn" type="submit" >Send Message</button>
       </form>
     </div>
   )
